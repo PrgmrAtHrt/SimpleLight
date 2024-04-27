@@ -2748,9 +2748,17 @@ re_showfile:
 			break;//SRAM_TYPE 32k
 		case 0x21:
 			savefilesize = 0x200;
+			if ((GAMECODE[0] == 'F') && ((GAMECODE[3] == 'E') || (GAMECODE[3] == 'P') || (GAMECODE[3] == 'J')))
+			{
+				saveMODE = 0x11; //Override save type if a Classic NES or Famicom Mini title is detected
+			}
 			break;//EEPROM_TYPE 512
 		case 0x22:
 			savefilesize = 0x2000;
+			if ((GAMECODE[0] == 'F') && ((GAMECODE[3] == 'E') || (GAMECODE[3] == 'J')))
+			{
+				saveMODE = 0x11; //Override save type if a Classic NES or Famicom Mini title is detected
+			}
 			break;//EEPROM_TYPE 8k
 		case 0x23:
 			savefilesize = 0x2000;
